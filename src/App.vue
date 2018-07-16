@@ -20,11 +20,12 @@
                                 博客
                             </menu-item>
                         </router-link>
-
-                        <menu-item name="3">
-                            <Icon type="ios-analytics"></Icon>
-                            常用
-                        </menu-item>
+                        <router-link to="/website">
+                            <menu-item name="3">
+                                <Icon type="ios-analytics"></Icon>
+                                常用网站
+                            </menu-item>
+                        </router-link>
                         <router-link to="/about">
                             <menu-item name="4">
                                 <Icon type="ios-paper"></Icon>
@@ -35,16 +36,11 @@
                 </Menu>
             </Header>
             <Content :style="{padding: '0 50px'}">
-                <Breadcrumb :style="{margin: '20px 0'}">
-                    <BreadcrumbItem>Home</BreadcrumbItem>
-                    <BreadcrumbItem>Components</BreadcrumbItem>
-                    <BreadcrumbItem>Layout</BreadcrumbItem>
-                </Breadcrumb>
                 <Card>
                     <router-view></router-view>
                 </Card>
             </Content>
-            <Footer class="layout-footer-center">2011-2016 &copy; TalkingData</Footer>
+            <Footer class="layout-footer-center">2018-2018 &copy; y3tu</Footer>
         </Layout>
     </div>
 </template>

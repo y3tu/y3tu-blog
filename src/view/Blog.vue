@@ -1,10 +1,14 @@
+<style>
+</style>
 <template>
-    <div>
-        ddd blog
+    <div style="text-align: center">
+        <Spin size="large" style="margin: 0 auto;"></Spin>
+        <span>博客建设中</span>
     </div>
-</template>
 
+</template>
 <script>
+    // 部分样式代码冗长，未作展示
     export default {
 
     }

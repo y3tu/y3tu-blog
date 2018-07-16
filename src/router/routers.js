@@ -18,6 +18,15 @@ export default [
         component: () => import('@/view/Blog.vue')
     },
     {
+        path: '/website',
+        name: '常用网站',
+        meta: {
+            title: '常用网站',
+            hideInMenu: true
+        },
+        component: () => import('@/view/Website.vue')
+    },
+    {
         path: '/about',
         name: 'about',
         meta: {

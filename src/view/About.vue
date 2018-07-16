@@ -1,5 +1,6 @@
 <template>
-    <div>about
+    <div>
+        y3tu
     </div>
 </template>
 
