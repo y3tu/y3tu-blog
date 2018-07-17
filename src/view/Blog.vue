@@ -1,11 +1,7 @@
 <style>
 </style>
 <template>
-    <div style="text-align: center">
-        <Spin size="large" style="margin: 0 auto;"></Spin>
-        <span>博客建设中</span>
-    </div>
-
+    <article-list></article-list>
 </template>
 <script>
     import articleList from '../components/ArticleList';
