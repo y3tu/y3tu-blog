@@ -28,7 +28,7 @@
 <script>
 
     export default {
-        name: 'tools',
+        name: 'website',
         data() {
             return {
                 dataCon: [

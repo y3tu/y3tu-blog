@@ -18,6 +18,11 @@ export default [
         component: () => import('@/view/Blog.vue')
     },
     {
+        path: '/detail/:id',
+        name: 'detail',
+        component: () => import('@/view/Detail.vue')
+    },
+    {
         path: '/website',
         name: '常用网站',
         meta: {

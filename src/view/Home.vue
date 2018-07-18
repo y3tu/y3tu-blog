@@ -1,8 +1,8 @@
 <template>
     <div>
         <Row>
-            <ICol span="24">
-                <Carousel autoplay v-model="value2" autoplay-speed="3000" loop>
+            <i-col span="24">
+                <Carousel autoplay v-model="value2" loop>
                     <CarouselItem>
                         <div class="demo-carousel bg_image">
                             <img src="../assets/image/bg/1.jpg"/>
@@ -19,16 +19,18 @@
                         </div>
                     </CarouselItem>
                 </Carousel>
-            </ICol>
+            </i-col>
         </Row>
     </div>
 
 </template>
 <script>
     export default {
+        name: 'home',
         data() {
             return {
-                value2: 0
+                value2: 0,
+
             }
         }
     }
