@@ -32,6 +32,12 @@
                                 关于
                             </menu-item>
                         </router-link>
+                        <router-link to="/test">
+                            <menu-item name="5">
+                                <Icon type="ios-paper"></Icon>
+                                测试
+                            </menu-item>
+                        </router-link>
                     </div>
                 </Menu>
             </Header>
@@ -90,7 +96,7 @@
     }
 
     .layout-nav {
-        width: 420px;
+        width: 620px;
         margin: 0 auto;
         margin-right: 20px;
     }

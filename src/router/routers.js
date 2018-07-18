@@ -39,6 +39,15 @@ export default [
             hideInMenu: true
         },
         component: () => import('@/view/About.vue')
+    },
+    {
+        path: '/test',
+        name: 'test',
+        meta: {
+            title: '测试',
+            hideInMenu: true
+        },
+        component: () => import('@/components/Loading.vue')
     }
 
 ]
