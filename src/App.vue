@@ -2,7 +2,7 @@
     <div class="layout">
         <Layout>
             <Header class="header">
-                <Menu mode="horizontal" theme="light" active-name="1">
+                <Menu mode="horizontal" theme="light">
                     <div>
                         <img src="./assets/logo.png" class="layout-logo"/>
                     </div>

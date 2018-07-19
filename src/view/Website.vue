@@ -60,10 +60,10 @@
                                 des: '快速简单的图像占位符'
                             },
                             {
-                                url: 'http://www.doutula.com/',
-                                img: 'http://static.doutula.com/img/wechatmini.jpg',
-                                title: '斗图网',
-                                des: '真正的斗图网站（我写博客用）'
+                                url: 'http://gank.io/',
+                                img: 'http://gank.io/static/favicon.ico',
+                                title: '干货集中营',
+                                des: '分享妹子图和技术干货'
                             },
                             {
                                 url: 'http://oatthegoat.co.nz/',

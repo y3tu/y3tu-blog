@@ -9,7 +9,8 @@
                             <div class="article-img-inner">
                                 <img :src="getMainImage[index]" alt="">
                             </div>
-                            <div class="article-content" :style="{borderLeft:item.labels[0] ? `10px solid #${item.labels[0].color}`: ''}">
+                            <div class="article-content"
+                                 :style="{borderLeft:item.labels[0] ? `10px solid #${item.labels[0].color}`: ''}">
                                 <h1>{{item.title}}</h1>
                                 <p class="article-des" v-html="getMainDes[index]"></p>
                                 <div class="article-label">
@@ -21,6 +22,9 @@
                         </router-link>
                     </li>
                 </ul>
+
+                <Page @on-change="pageChange" :total=count :page-size="4" show-total :current=currentPage></Page>
+
                 <aside>
                     <div class="author-inner">
                         <img class="author-img" src="../assets/image/author.jpg" alt="">
@@ -53,7 +57,8 @@
                 list: [],
                 loading: true,
                 pageNo: 1,//总页数
-                currentPage: 1//当前页
+                currentPage: 1,//当前页
+                count: 0,//博客数量
             }
         },
         mounted() {
@@ -73,12 +78,13 @@
              */
             requestData(currentPage) {
                 // 在这里使用ajax或者fetch将对应页传过去获取数据即可
-                let url = 'https://api.github.com/repos/LeachZhou/blog/issues';
+                let url = 'https://api.github.com/repos/y3tu/y3tu-blog/issues';
                 let per_page = 4;//每页4条数据
                 let filter = 'created';
                 let sort = 'updated';
                 this.$axios.get(`${url}?labels=已审核&&filter=${filter}&&sort=${sort}`).then((res) => {
                     if (res.status === 200) {
+                        this.count = res.data.length;
                         this.pageNo = Math.ceil(res.data.length / 4);
                     }
                 }).catch((err) => {
@@ -93,6 +99,12 @@
                     console.log(err);
                     this.loading = false;
                 });
+            },
+            pageChange(value) {
+                //this.loading = true;
+                console.log("当前页数:" + value);
+                this.currentPage = value;
+                this.requestData(value);
             }
         },
         computed: {
@@ -117,7 +129,7 @@
             getTime() {
                 let arr = [];
                 for (let item of this.list) {
-                    arr.push(friendlytimejs.FriendlyTime(dayjs(item.updated_at).add(8, "hour").format('YYYY-MM-DD HH:mm:ss'), dayjs()));
+                    arr.push(friendlytimejs.FriendlyTime(dayjs(item.updated_at).format('YYYY-MM-DD HH:mm:ss'), dayjs()));
                 }
                 return arr;
             }
@@ -130,11 +142,12 @@
 </script>
 
 <style lang="less" scoped>
-    .layer{
+    .layer {
         position: relative;
         width: 960px;
         margin: 0 auto;
     }
+
     aside {
         position: absolute;
         right: 0;
@@ -208,6 +221,7 @@
     ul {
         padding-top: 50px;
         width: 700px;
+
         li {
             position: relative;
             display: block;
@@ -222,6 +236,7 @@
                 box-shadow: 0 8px 11px -6px rgba(0, 0, 0, .5);
                 transform: translateX(10px);
             }
+
             .article-img-inner {
                 position: relative;
                 float: left;
@@ -236,10 +251,11 @@
                     object-fit: cover;
                 }
             }
+
             .article-content {
                 position: relative;
                 float: left;
-                width: calc(100% - 200px);
+                width: calc(~'100% - 200px');
                 height: 200px;
                 border-left: 10px solid #00b1ff;
                 padding: 20px;
@@ -257,9 +273,7 @@
                     text-overflow: ellipsis;
                     display: -webkit-box;
                     -webkit-line-clamp: 3;
-                    /*! autoprefixer: off */
                     -webkit-box-orient: vertical;
-                    /* autoprefixer: on */
                     word-break: break-all;
                     line-height: 1.5;
                     color: #999999;
@@ -285,10 +299,9 @@
                         margin-right: 10px;
                         font-size: 12px;
                     }
-
                 }
-
             }
         }
     }
+
 </style>
