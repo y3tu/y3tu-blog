@@ -42,22 +42,22 @@
                                 des: '海量存储/加速传输'
                             },
                             {
-                                url: 'https://www.bmob.cn/',
-                                img: 'https://assets2016.bmob.cn/img/favicon.ico',
-                                title: 'Bmob',
-                                des: 'SASS后端云平台'
+                                url: 'http://www.java1234.com/',
+                                img: 'http://www.java1234.com/images/logo.jpg',
+                                title: 'Java知识分享网',
+                                des: 'Java知识分享网'
                             },
                             {
-                                url: 'http://idc.hao58.net/',
-                                img: 'http://idc.hao58.net/favicon.ico',
-                                title: '铭萱网络',
+                                url: 'https://bwh1.net/',
+                                img: 'https://bwh1.net/templates/organicbandwagon/images/logo.png',
+                                title: '搬瓦工',
                                 des: '虚拟主机/vps/服务器'
                             },
                             {
-                                url: 'https://placeholder.com/',
-                                img: 'http://via.placeholder.com/32x32',
-                                title: 'placeholder.com',
-                                des: '快速简单的图像占位符'
+                                url: 'https://www.jb51.net/',
+                                img: 'https://www.jb51.net/images/logo.gif',
+                                title: '脚本之家',
+                                des: '脚本之家的电子书不错'
                             },
                             {
                                 url: 'http://gank.io/',

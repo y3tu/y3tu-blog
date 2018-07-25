@@ -23,9 +23,13 @@
                     </li>
                 </ul>
 
-                <Page @on-change="pageChange" :total=count :page-size="4" show-total :current=currentPage></Page>
+                <Page v-if="list.length>0" @on-change="pageChange" :total=count :page-size="4" show-total :current=currentPage></Page>
 
                 <aside>
+                    <Tag  v-for="items in labelList" v-bind:key="items.id"
+                          @click.native="requestData(currentPage,items.name)"
+                          :style="{background:`#${items.color}`}">{{items.name}}
+                    </Tag>
                     <div class="author-inner">
                         <img class="author-img" src="../assets/image/author.jpg" alt="">
                         <h3>Y3tu</h3>
@@ -38,6 +42,7 @@
                         </ul>
                     </div>
                 </aside>
+
             </div>
         </transition>
     </div>
@@ -54,7 +59,8 @@
         name: 'articleList',
         data() {
             return {
-                list: [],
+                list: [],//blog信息
+                labelList: [],//标签信息
                 loading: true,
                 pageNo: 1,//总页数
                 currentPage: 1,//当前页
@@ -62,6 +68,9 @@
             }
         },
         mounted() {
+            //获取所以label标签
+            this.requestLabels();
+            //获取第一页的blog数据
             this.requestData(this.currentPage);
         },
         watch: {
@@ -76,13 +85,16 @@
              * 获取数据
              * @param currentPage 当前页
              */
-            requestData(currentPage) {
+            requestData(currentPage, label) {
                 // 在这里使用ajax或者fetch将对应页传过去获取数据即可
                 let url = 'https://api.github.com/repos/y3tu/y3tu-blog/issues';
                 let per_page = 4;//每页4条数据
                 let filter = 'created';
                 let sort = 'updated';
-                this.$axios.get(`${url}?labels=已审核&&filter=${filter}&&sort=${sort}`).then((res) => {
+                if (label == null || label == '') {
+                    label = '已审核';
+                }
+                this.$axios.get(`${url}?labels=${label}&&filter=${filter}&&sort=${sort}`).then((res) => {
                     if (res.status === 200) {
                         this.count = res.data.length;
                         this.pageNo = Math.ceil(res.data.length / 4);
@@ -90,7 +102,7 @@
                 }).catch((err) => {
                     console.log(err);
                 });
-                this.$axios.get(`${url}?labels=已审核&&page=${currentPage}&&per_page=${per_page}&&filter=${filter}&&sort=${sort}`).then((res) => {
+                this.$axios.get(`${url}?labels=${label}&&page=${currentPage}&&per_page=${per_page}&&filter=${filter}&&sort=${sort}`).then((res) => {
                     if (res.status === 200) {
                         this.list = res.data;
                         this.loading = false;
@@ -105,7 +117,18 @@
                 console.log("当前页数:" + value);
                 this.currentPage = value;
                 this.requestData(value);
+            },
+            requestLabels() {
+                let url = 'https://api.github.com/repos/y3tu/y3tu-blog/labels';
+                this.$axios.get(`${url}`).then((res) => {
+                    if (res.status === 200) {
+                        this.labelList = res.data;
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                });
             }
+
         },
         computed: {
             getMainImage() {

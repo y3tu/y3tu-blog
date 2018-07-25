@@ -42,7 +42,7 @@
                 </Menu>
             </Header>
             <Content :style="{padding: '0 50px'}">
-                <Card>
+                <Card style="min-height: 700px">
                     <router-view></router-view>
                 </Card>
             </Content>
