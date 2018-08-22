@@ -46,7 +46,7 @@
                     <router-view></router-view>
                 </Card>
             </Content>
-            <Footer class="layout-footer-center">2018-2018 &copy; y3tu</Footer>
+            <Footer class="layout-footer-center">2018 &copy; y3tu</Footer>
         </Layout>
     </div>
 </template>

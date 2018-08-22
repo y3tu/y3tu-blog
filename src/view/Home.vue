@@ -1,36 +1,54 @@
 <template>
     <div>
         <Row>
-            <i-col span="24">
-                <Carousel autoplay v-model="value2" loop>
-                    <CarouselItem>
-                        <div class="demo-carousel bg_image">
-                            <img src="../assets/image/bg/1.jpg"/>
-                        </div>
-                    </CarouselItem>
-                    <CarouselItem>
-                        <div class="demo-carousel bg_image">
-                            <img src="../assets/image/bg/2.jpg"/>
-                        </div>
-                    </CarouselItem>
-                    <CarouselItem>
-                        <div class="demo-carousel bg_image">
-                            <img src="../assets/image/bg/3.jpg"/>
-                        </div>
-                    </CarouselItem>
-                </Carousel>
+            <i-col span="12" offset="6">
+                <loading v-if="loading"></loading>
+                <div v-else>
+                    <Carousel autoplay v-model="value2" loop autoplay-speed="5000">
+                        <CarouselItem v-for="homeData in homeDataList" v-bind:key="homeData._id">
+                            <img :src="homeData.url" style="max-width:840px;max-height: 1000px"/>
+                        </CarouselItem>
+                    </Carousel>
+                </div>
             </i-col>
         </Row>
     </div>
 
 </template>
 <script>
+    /* eslint-disable no-console,no-unused-vars */
+    import loading from '../components/Loading'
+
     export default {
         name: 'home',
         data() {
             return {
+                homeDataList: {},
                 value2: 0,
-
+                loading: true
+            }
+        },
+        mounted() {
+            this.getHomeData();
+        },
+        components: {
+            loading
+        },
+        methods: {
+            /**
+             * 获取首页图片数据
+             */
+            getHomeData() {
+                let url = 'https://gank.io/api/data/福利/50/1';
+                this.$axios.get(`${url}`).then((res) => {
+                    if (res.status === 200) {
+                        this.homeDataList=res.data.results;
+                        this.loading = false;
+                    }
+                }).catch((err) => {
+                    this.loading = false;
+                    console.log(err);
+                });
             }
         }
     }
