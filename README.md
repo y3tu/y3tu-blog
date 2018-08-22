@@ -4,5 +4,4 @@
 网页内容参考LeachZhou  https://github.com/LeachZhou/blog
 感谢！
 
-* 🌐 I18n support
 :grinning:
