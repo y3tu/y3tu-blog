@@ -31,8 +31,7 @@ Vue.directive('title', (el) => {
 });
 
 new Vue({
-    el: '#app',
     router,
     store,
     render: h => h(App)
-});
+}).$mount('#app')

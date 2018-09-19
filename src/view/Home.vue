@@ -39,7 +39,7 @@
              * 获取首页图片数据
              */
             getHomeData() {
-                let url = 'https://gank.io/api/data/福利/50/1';
+                let url = 'https://gank.io/api/data/福利/5/1';
                 this.$axios.get(`${url}`).then((res) => {
                     if (res.status === 200) {
                         this.homeDataList=res.data.results;
