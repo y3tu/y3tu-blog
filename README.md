@@ -21,3 +21,6 @@
 
 ## 数据库
 - [10亿级订单系统分库分表设计思路](https://mp.weixin.qq.com/s/EY1L-7GpZ8AVsaM8sdpgAw)
+
+## 分布式
+- [分布式事务的实现原理](https://draveness.me/distributed-transaction-principle)
