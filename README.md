@@ -18,3 +18,6 @@
 
 ## Zookeeper
 - [Mac上zookeeper的安装与启动](https://www.jianshu.com/p/5491d16e6abd)
+
+## 数据库
+- [10亿级订单系统分库分表设计思路](https://mp.weixin.qq.com/s/EY1L-7GpZ8AVsaM8sdpgAw)
