@@ -1,10 +1,11 @@
 # y3tu-blog
 记录、分享工作学习中有趣的东西
 
-网页内容参考LeachZhou  https://github.com/LeachZhou/blog
-感谢！
+blog基于vue开发。  
+使用的工具:
+-  [vue-aplayer](https://github.com/MoePlayer/vue-aplayer) 网页音乐播放器
+-  [vue-element-loading](https://github.com/biigpongsatorn/vue-element-loading) loading加载
 
-:grinning:
 
 值得学习的文章  
 ## Java  
