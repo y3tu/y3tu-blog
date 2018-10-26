@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const service = axios.create({
-    baseURL: "http://localhost:8081",
+    baseURL: "http://132.232.11.210:8081",
     withCredentials: true, // 跨域请求，允许保存cookie
     timeout: 30000 // 请求超时时间
 });
