@@ -41,13 +41,13 @@ export default [
         component: () => import('@/view/About.vue')
     },
     {
-        path: '/test',
-        name: 'test',
+        path: '/meizi',
+        name: 'MEIZI',
         meta: {
-            title: '测试',
+            title: '妹子',
             hideInMenu: true
         },
-        component: () => import('@/components/Loading.vue')
+        component: () => import('@/view/Meizi.vue')
     }
 
 ]

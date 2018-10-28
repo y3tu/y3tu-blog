@@ -22,14 +22,14 @@
                                     WEBSITE
                                 </menu-item>
                             </router-link>
-                            <router-link to="/about">
-                                <menu-item name="4">
-                                    ABOUT
-                                </menu-item>
-                            </router-link>
-                            <router-link to="/test">
+                            <!--<router-link to="/about">-->
+                                <!--<menu-item name="4">-->
+                                    <!--ABOUT-->
+                                <!--</menu-item>-->
+                            <!--</router-link>-->
+                            <router-link to="/meizi">
                                 <menu-item name="5">
-                                    TEST
+                                    MEIZI
                                 </menu-item>
                             </router-link>
                         </div>
@@ -40,7 +40,6 @@
                         <router-view></router-view>
                     </Content>
                 </Layout>
-                <Footer class="layout-footer-center">2018 &copy; y3tu</Footer>
             </Layout>
 
             <Sider class="layout-right" :width="270">
@@ -118,7 +117,7 @@
     }
 
     .layout {
-        border: 1px solid #d7dde4;
+        border: 0px solid #d7dde4;
         background: #FFFFFF;
         position: relative;
         border-radius: 4px;
@@ -163,7 +162,6 @@
         position: fixed;
         right: 0;
         overflow: auto;
-
         a {
             list-style: none;
             display: inline;
@@ -175,11 +173,6 @@
             font-family: Lucida_Handwritdf74cd7e117c83
         }
 
-    }
-
-    .layout-footer-center {
-        text-align: center;
-        background-color: #FFFFFF;
     }
 
     .header {

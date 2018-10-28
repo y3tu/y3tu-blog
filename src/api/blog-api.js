@@ -1,21 +1,15 @@
-import axios from 'axios'
-
-const service = axios.create({
-    baseURL: "http://132.232.11.210:8081",
-    withCredentials: true, // 跨域请求，允许保存cookie
-    timeout: 30000 // 请求超时时间
-});
-
-export const getWebsite = () => {
-    return service({
-        url: '/website/getAll',
-        method: 'get'
-    });
-};
+import request from '@/plugin/axios'
 
 export const getMusic = () => {
-    return service({
+    return request({
         method: 'get',
         url: '/music/getAll'
     });
+};
+
+export const getWebsite = () => {
+    return request({
+        method: 'get',
+        url: '/website/getWebsiteGroupByCategory'
+    })
 };
