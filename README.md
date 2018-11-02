@@ -20,6 +20,7 @@
 - #### 分布式
     1.[分布式事务的实现原理](https://draveness.me/distributed-transaction-principle)
 
+
 # 开源项目收藏  
 - #### 前端组件
     1.[vue-aplayer 网页音乐播放器](https://github.com/MoePlayer/vue-aplayer)    
@@ -28,3 +29,5 @@
 - #### 分布式定时任务
     1.[xxl-job 轻量级分布式任务调度平台](https://github.com/xuxueli/xxl-job)  
     2.[elastic-job 基于Quartz和Zookeeper的分布式任务框架](https://github.com/elasticjob/elastic-job-lite)
+- #### 缓存
+    1.[layering-cache 为监控而生的多级缓存框架](https://github.com/xiaolyuh/layering-cache) 
