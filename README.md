@@ -36,3 +36,6 @@
     1.[myth 基于可靠消息最终一致性分布式事务框架](https://github.com/yu199195/myth)   
     2.[LCN 分布式事务框架](https://github.com/codingapi/tx-lcn/)   
     3.[coolmq 基于rabbitmq的分布式事务解决方案](https://github.com/vvsuperman/coolmq)
+- #### 分布式session
+    1.[spring-session 实现分布式集群session的共享](https://github.com/spring-projects/spring-session) [查看教程](https://juejin.im/post/5bdd449b6fb9a04a09557a40?utm_source=gold_browser_extension)
+      
