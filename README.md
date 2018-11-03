@@ -32,3 +32,7 @@
 - #### 缓存
     1.[layering-cache 为监控而生的多级缓存框架](https://github.com/xiaolyuh/layering-cache)              
     2.[jetcache 阿里巴巴开源的通用缓存访问框架](https://github.com/alibaba/jetcache)
+- #### 分布式事务
+    1.[myth 基于可靠消息最终一致性分布式事务框架](https://github.com/yu199195/myth)   
+    2.[LCN 分布式事务框架](https://github.com/codingapi/tx-lcn/)   
+    3.[coolmq 基于rabbitmq的分布式事务解决方案](https://github.com/vvsuperman/coolmq)
