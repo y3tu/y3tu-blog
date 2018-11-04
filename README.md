@@ -39,3 +39,10 @@
 - #### 分布式session
     1.[spring-session 实现分布式集群session的共享](https://github.com/spring-projects/spring-session) [查看教程](https://juejin.im/post/5bdd449b6fb9a04a09557a40?utm_source=gold_browser_extension)
       
+- #### 批处理
+    1.[Spring Batch批量处理框架](https://github.com/spring-projects/spring-batch)
+    
+# 工具收藏
+- #### idea插件
+    1.[jrebel 热部署神器](https://zeroturnaround.com/software/jrebel/)
+    
