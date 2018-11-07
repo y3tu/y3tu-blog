@@ -46,3 +46,7 @@
 - #### idea插件
     1.[jrebel 热部署神器](https://zeroturnaround.com/software/jrebel/)
     
+- #### sql优化
+    1.[小米SQL智能优化与改写工具](https://github.com/XiaoMi/soar)
+    2.[美团点评SQL索引优化建议的工具](https://github.com/Meituan-Dianping/SQLAdvisor)
+    
