@@ -50,3 +50,5 @@
     1.[小米SQL智能优化与改写工具](https://github.com/XiaoMi/soar)   
     2.[美团点评SQL索引优化建议的工具](https://github.com/Meituan-Dianping/SQLAdvisor)
     
+    <img src="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-16/49833984.jpg" width=""/>
+    
