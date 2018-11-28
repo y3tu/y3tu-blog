@@ -6,10 +6,10 @@
     1. [Java 8 中的 Streams API 详解](https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/)  
 
 - #### Docker  
-    1.[Centos7上安装docker](https://www.cnblogs.com/yufeng218/p/8370670.html)
-    2.[使用docker-compose 大杀器来部署服务](https://www.cnblogs.com/neptunemoon/p/6512121.html)
-    3.[Docker与微服务-使用Maven插件构建Docker镜像](https://blog.csdn.net/keketrtr/article/details/78042856)
-    4.[Docker Maven插件本地构建镜像发布至远程服务器](https://blog.csdn.net/laravelshao/article/details/79773895)
+    1.[Centos7上安装docker](https://www.cnblogs.com/yufeng218/p/8370670.html)   
+    2.[使用docker-compose 大杀器来部署服务](https://www.cnblogs.com/neptunemoon/p/6512121.html)   
+    3.[Docker与微服务-使用Maven插件构建Docker镜像](https://blog.csdn.net/keketrtr/article/details/78042856)   
+    4.[Docker Maven插件本地构建镜像发布至远程服务器](https://blog.csdn.net/laravelshao/article/details/79773895)   
 
 - #### Zookeeper
     1.[Mac上zookeeper的安装与启动](https://www.jianshu.com/p/5491d16e6abd)
@@ -47,6 +47,6 @@
     1.[jrebel 热部署神器](https://zeroturnaround.com/software/jrebel/)
     
 - #### sql优化
-    1.[小米SQL智能优化与改写工具](https://github.com/XiaoMi/soar)
+    1.[小米SQL智能优化与改写工具](https://github.com/XiaoMi/soar)   
     2.[美团点评SQL索引优化建议的工具](https://github.com/Meituan-Dianping/SQLAdvisor)
     
