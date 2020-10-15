@@ -2,18 +2,19 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import iView from 'iview';
-import 'iview/dist/styles/iview.css';
-import hljs from 'highlight.js'
-import 'highlight.js/styles/monokai-sublime.css'
-import axios from 'axios'
 
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
+import '@/assets/css/main.scss'
+import i18n from './lang'
 
+Vue.use(ElementUI);
 
-Vue.use(iView);
-Vue.prototype.$axios = axios;
+Vue.prototype.$ELEMENT = {
+    size: (localStorage.getItem('size') || 'medium'),
+    i18n: (key, value) => i18n.t(key, value)
+}
 
-Vue.config.productionTip = false;
 
 //为文章详情添加代码高亮
 Vue.directive('highlight', (el) => {
@@ -22,17 +23,21 @@ Vue.directive('highlight', (el) => {
         hljs.highlightBlock(block)
     })
 });
+
 //为网站添加动态标题
 Vue.directive('title', (el) => {
     if (el.dataset.title === undefined) {
-        document.title = `等待中... | y3tu`;
+        document.title = `等待中... | yao`;
     } else {
-        document.title = `${el.dataset.title} | y3tu`;
+        document.title = `${el.dataset.title} | yao`;
     }
 });
+
+Vue.config.productionTip = false
 
 new Vue({
     router,
     store,
+    i18n,
     render: h => h(App)
 }).$mount('#app')
