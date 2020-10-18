@@ -1,18 +1,17 @@
 <template>
     <div>
         <transition name="slide-fade">
-            <loading v-if="loading"></loading>
+            <loading v-if="loading"/>
             <div v-else class="layer">
                 <ul>
-                    <li v-for="(item,index) in list" v-bind:key="item.number">
+                    <li v-for="(item,index) in articleList" v-bind:key="item.number">
                         <router-link :to="{name:'detail',params:{id:item.number}}">
                             <div class="article-img-inner">
                                 <img :src="getMainImage[index]" alt="">
                             </div>
-                            <div class="article-content"
-                                 :style="{borderLeft:item.labels[0] ? `10px solid #${item.labels[0].color}`: ''}">
+                            <div class="article-content" :style="{borderLeft:item.labels[0] ? `10px solid #${item.labels[0].color}`: ''}">
                                 <h1>{{item.title}}</h1>
-                                <p class="article-des" v-html="getMainDes[index]"></p>
+                                <p class="article-des" v-html="getMainDes[index]"/>
                                 <div class="article-label">
                                     <div class="article-time">更新时间：{{getTime[index]}}</div>
                                     <label v-for="items in item.labels" v-bind:key="items.id"
@@ -22,113 +21,57 @@
                         </router-link>
                     </li>
                 </ul>
-
-                <Page v-if="list.length>0" @on-change="pageChange" :total=count :page-size="4" show-total :current=currentPage></Page>
-
-                <aside>
-                    <Tag  v-for="items in labelList" v-bind:key="items.id"
-                          @click.native="requestData(currentPage,items.name)"
-                          :style="{background:`#${items.color}`}">{{items.name}}
-                    </Tag>
-                    <div class="author-inner">
-                        <img class="author-img" src="../assets/image/author.jpg" alt="">
-                        <h3>Y3tu</h3>
-                        <ul>
-                            <li>
-                                <a href="https://github.com/y3tu" target="_blank">
-                                    <img src="../assets/image/github.png" alt="">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </aside>
-
             </div>
         </transition>
     </div>
 </template>
 
 <script>
-    /* eslint-disable */
     import marked from 'marked'
     import friendlytimejs from 'friendlytimejs'
     import dayjs from 'dayjs'
-    import loading from '../components/Loading'
+    import loading from '@/components/Loading'
+    import request from '@/plugin/axios'
 
     export default {
         name: 'articleList',
+        components: {
+            loading
+        },
+        props: [],
         data() {
             return {
-                list: [],//blog信息
-                labelList: [],//标签信息
+                //文章集合
+                articleList: [],
+                //加载loading
                 loading: true,
-                pageNo: 1,//总页数
-                currentPage: 1,//当前页
-                count: 0,//博客数量
+                //当前页
+                current: 1,
+                //每页展示条数
+                size: 10,
             }
         },
-        mounted() {
-            //获取所以label标签
-            this.requestLabels();
-            //获取第一页的blog数据
-            this.requestData(this.currentPage);
+        created() {
+            //获取第一页的文章数据
+            this.articlePage(1);
         },
-        watch: {
-            //currentPage改变执行requestData
-            currentPage: function (val) {
-                this.loading = true;
-                this.requestData(val);
-            }
-        },
+        watch: {},
         methods: {
             /**
-             * 获取数据
-             * @param currentPage 当前页
+             * 获取文章分页数据
              */
-            requestData(currentPage, label) {
-                // 在这里使用ajax或者fetch将对应页传过去获取数据即可
-                let url = 'https://api.github.com/repos/y3tu/y3tu-blog/issues';
-                let per_page = 4;//每页4条数据
-                let filter = 'created';
-                let sort = 'updated';
-                if (label == null || label == '') {
-                    label = '已审核';
-                }
-                this.$axios.get(`${url}?labels=${label}&&filter=${filter}&&sort=${sort}`).then((res) => {
-                    if (res.status === 200) {
-                        this.count = res.data.length;
-                        this.pageNo = Math.ceil(res.data.length / 4);
-                    }
-                }).catch((err) => {
-                    console.log(err);
-                });
-                this.$axios.get(`${url}?labels=${label}&&page=${currentPage}&&per_page=${per_page}&&filter=${filter}&&sort=${sort}`).then((res) => {
-                    if (res.status === 200) {
-                        this.list = res.data;
-                        this.loading = false;
-                    }
+            articlePage(current) {
+                request.page("/blog/article/page", {
+                    current: current,
+                    size: this.size
+                }).then(res => {
+                    this.articleList = res.data;
+                    this.loading = false;
                 }).catch((err) => {
                     console.log(err);
                     this.loading = false;
                 });
             },
-            pageChange(value) {
-                //this.loading = true;
-                console.log("当前页数:" + value);
-                this.currentPage = value;
-                this.requestData(value);
-            },
-            requestLabels() {
-                let url = 'https://api.github.com/repos/y3tu/y3tu-blog/labels';
-                this.$axios.get(`${url}`).then((res) => {
-                    if (res.status === 200) {
-                        this.labelList = res.data;
-                    }
-                }).catch((err) => {
-                    console.log(err);
-                });
-            }
-
         },
         computed: {
             getMainImage() {
@@ -157,10 +100,6 @@
                 return arr;
             }
         },
-        components: {
-            loading
-        },
-        props: []
     }
 </script>
 
@@ -177,6 +116,7 @@
         top: 50px;
         width: 240px;
         overflow: hidden;
+
         .author-inner {
             position: relative;
             background: #ffffff;
@@ -186,6 +126,7 @@
             border-radius: 5px;
             text-align: center;
             box-shadow: 0 19px 35px -22px rgb(255, 255, 255);
+
             .author-img {
                 width: 150px;
                 height: 150px;
@@ -194,19 +135,23 @@
                 margin: 0 auto;
                 object-fit: cover;
             }
+
             h3 {
                 margin: 20px 0;
             }
+
             p {
                 color: #7e8c8d;
                 font-size: 12px;
                 line-height: 1.5;
             }
+
             ul {
                 text-align: center;
                 overflow: auto;
                 width: 100%;
                 padding-top: 20px;
+
                 li {
                     /*float: left;*/
                     margin: 0 auto;
@@ -214,23 +159,27 @@
                     height: 50px;
                     background: #dedede;
                     border-radius: 50%;
+
                     &:hover {
                         transition: all .6s ease;
                         transform: translateX(0);
                         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
                     }
+
                     img {
                         margin: 9px 0;
                     }
                 }
             }
         }
+
         .img-inner {
             position: relative;
             background: #ffffff;
             width: 240px;
             margin-bottom: 20px;
             border-radius: 5px;
+
             img {
                 width: 240px;
                 height: 240px;
@@ -254,6 +203,7 @@
             overflow: hidden;
             margin-bottom: 20px;
             transition: all .6s ease;
+
             &:hover {
                 transition: all .6s ease;
                 box-shadow: 0 8px 11px -6px rgba(0, 0, 0, .5);
@@ -268,6 +218,7 @@
                 height: 200px;
                 overflow: hidden;
                 object-fit: cover;
+
                 img {
                     width: 200px;
                     height: 200px;
@@ -282,6 +233,7 @@
                 height: 200px;
                 border-left: 10px solid #00b1ff;
                 padding: 20px;
+
                 h1 {
                     font-size: 20px;
                     height: 25px;
@@ -291,6 +243,7 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
                 }
+
                 .article-des {
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -302,10 +255,12 @@
                     color: #999999;
                     font-size: 14px;
                 }
+
                 .article-label {
                     position: absolute;
                     left: 20px;
                     bottom: 20px;
+
                     .article-time {
                         float: left;
                         margin-right: 10px;
@@ -313,6 +268,7 @@
                         color: #999999;
                         font-size: 12px;
                     }
+
                     label {
                         float: left;
                         background: #00b1ff;

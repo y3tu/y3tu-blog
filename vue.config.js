@@ -1,17 +1,29 @@
-const path = require('path')
+'use strict';
+const settings = require('./src/settings.js');
+const path = require('path');
 
-// 拼接路径
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
-
-// 基础路径 注意发布之前要先修改这里
-const baseUrl = ''
+const name = settings.title; // page title
+const port = 80; // dev port
 
 module.exports = {
-    baseUrl: baseUrl, // 根据你的实际情况更改这里
-    lintOnSave: true,
+    publicPath: '/',
+    outputDir: 'dist',
+    assetsDir: 'static',
+    lintOnSave: process.env.NODE_ENV === 'development',
+    // 打包时不生成.map文件 避免看到源码
+    productionSourceMap: false,
     devServer: {
-        publicPath: baseUrl // 和 baseUrl 保持一致
+        port: port,
+        open: false,
+        overlay: {
+            warnings: false,
+            errors: true
+        }
+
     },
-}
+
+};
+
