@@ -13,7 +13,7 @@
     "doc:build": "vuepress build docs"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "element-ui": "^2.13.2",
     "dayjs": "^1.7.4",
     "friendlytimejs": "^1.0.1",
